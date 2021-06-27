@@ -6,7 +6,10 @@ from TransformData import \
 
 
 def drop_columns_analyze(df):
-    ''' Drops entire columns of no interest from the data set '''
+    '''
+    Drops entire columns of no interest from the data-set, to
+    make analysis easier. Returns the reduced pd.DataFrame.
+    '''
 
     list_column_values = value_counter(df)
 
@@ -38,16 +41,22 @@ def drop_columns_analyze(df):
 
 def transform_columns(df):
     '''
-    Transforms colums from categorical to numeric
-    currancy, rate, date, binary string-values, ordinal values
-    and speacial treatmend for some string value columns
+    Transforms columns from categorical to numeric type:
+    currency, rate, date, binary string-values, ordinal values
+    and special treatmend for some string value columns.
+
+    This function deals only with the part of the categorical columns which
+    is of interest for the following analysis.
+    There will be categorical columns left in the data-set!
+
+    OUTPUT (pd.DataFrame): The transformed input pd.DataFrame 'df'
     '''
     df = df
     list_column_values = value_counter(df)
 
 
-    # Currancy:
-    # Select columns wit currancy
+    # Currency:
+    # Select columns wit currency
     search_values = ['price', 'fee', 'deposit', 'extra']
     price_column_names  = index_by_key(df, search_values)
     # Transform values to float
@@ -94,21 +103,21 @@ def transform_columns(df):
         entry_split = df['amenities'].loc[i].replace(
             '{', '').replace('}', '').replace('"', '').split(sep=",")
         all_splitted_entrys = all_splitted_entrys+entry_split
-    all_values = list(set(all_splitted_entrys))  # Revomes dublicates
+    all_values = list(set(all_splitted_entrys))  # Removes duplicates
     all_values.remove('')
 
     # Create a new column for every value:
     split_column_values(df, 'amenities', all_values, 'amenities_')
     df.drop(columns=['amenities'], inplace=True)
 
-    # host_verifikations : Split column into column per value
+    # host_verifications : Split column into column per value
     # Identify all possible values:
     all_splitted_entrys = []
     for i in df.index:
             entry_split = df['host_verifications'].loc[i].replace(
                 '[', '').replace(']', '').replace("'", "").split(sep=", ")
             all_splitted_entrys = all_splitted_entrys+entry_split
-    all_values = list(set(all_splitted_entrys))  # Revomes dublicates
+    all_values = list(set(all_splitted_entrys))  # Removes duplicates
     all_values.remove('')
     all_values.remove('None')
 
@@ -116,7 +125,7 @@ def transform_columns(df):
     split_column_values(df, 'host_verifications', all_values, 'host_verifications_')
     df.drop(columns='host_verifications', axis=1, inplace=True)
 
-    # calender_updated :
+    '''# calender_updated :
     # Transform into an integer for the number of days passed
     temp = [0 for x in df.index]
     col = 'calendar_updated'
@@ -138,7 +147,7 @@ def transform_columns(df):
         elif 'month' in df[col].loc[i]:
             temp[i] = int(df[col].loc[i].split(' ')[0])*30
     # Overwrite the column calender_updated
-    df['calendar_updated'] = temp
+    df['calendar_updated'] = temp'''
 
     return df
 

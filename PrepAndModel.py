@@ -9,25 +9,14 @@ import pandas as pd
 from ExploreData import value_counter, index_by_key
 
 
-
-
-def drop_columns_train(df):
-    ''' Drops entire columns to prepare for modeling '''
-
-    df = df
-    df_categorical = df.select_dtypes(include=['object'])
-    df_values = value_counter(df_categorical)
-    to_many_values = df_values[df_values['val_count']>100].index
-    df.drop(to_many_values, axis=1)
-
-    return df
-
-
-
 def feature_encoding(df):
     '''
     Encodes remaining categorical columns for modeling
-    or drops them in case they have too many unique values
+    or drops them in case they have too many unique values.
+    
+    This function assumes a previous dealing with categorical columns from
+    'CategoricalPrep.transform_columns(df)' and
+    'CategoricalPrep.drop_columns_analyze(df)'
     '''
 
     df = df
@@ -54,10 +43,27 @@ def feature_encoding(df):
     return df
 
 
+def drop_columns_train(df):
+    '''
+    Drops entire columns to prepare for modeling. This step is also contained
+    in function 'feature_encoding(df)'
+    '''
+
+    df = df
+    df_categorical = df.select_dtypes(include=['object'])
+    df_values = value_counter(df_categorical)
+    to_many_values = df_values[df_values['val_count']>100].index
+    df.drop(to_many_values, axis=1)
+
+    return df
+
+
 
 def imputation(df):
-    ''' Deals with missing values in the data set '''
-
+    ''' Deals with missing values in pd.DataFrame 'df'.
+    
+    OUTPUT (pd.DataFrame): Returns an updated 'df' without missing values.
+    '''
     df_values = value_counter(df)
     # Store names fo columns with missing values in 'nans_attributes'
     df_nans = df_values[df_values['nan_pcnt'] > 0]
@@ -91,34 +97,5 @@ def imputation(df):
     return df
 
 
-
-def imputation_old(df):
-    '''
-    Identifies columns with NaN
-    imputes the mode for columns with 35 values or less
-    imputes the mean for the rest
-    '''
-
-    df_values = value_counter(df)
-    df_nans = df_values[df_values['nan_pcnt'] > 0]
-
-    col_fill_mode = df_nans[df_nans['val_count']<=35].index
-    col_fill_mean = df_nans[df_nans['val_count']>35].index
-
-    df_mode = df[col_fill_mode]
-    df_mode = df_mode.fillna(df_mode.mode().squeeze(), axis=0)
-
-    df_mean = df[col_fill_mean]
-    df_mean =df_mean.fillna(df_mean.mean(), axis=0)
-
-    df = df.drop(df_nans.index, axis=1)
-    df = df.join(df_mean).join(df_mode)
-    return df
-
-
-def drop_to_much_information(df):
-    ''' Drops information not fitting the question
-    '''
-    return df
 
 
