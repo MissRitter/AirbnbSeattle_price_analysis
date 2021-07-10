@@ -1,2 +1,2 @@
 ,criterion,max_depth,max_leaf_nodes,min_samples_leaf,min_samples_split
-0,mse,15,180,10,5
+0,mae,10,100,5,2
