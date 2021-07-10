@@ -1,24 +1,21 @@
 
-import numpy as np
+#import numpy as np
 import pandas as pd
-
-
-
-
-
 
 def date_transform(df, date_column, prefix=''):
     '''
-    INPUT - 
-    df - the pandas dataframe with a datetime-type column
-    date_column - the datetime-type columns name
+    Transform an object-column with date information to datetime and creates
+    additional separate columns for year, month and day
 
-    OUTPUT - 
-    df_trans - the original dataframe df with three etxra 
-    columns 'year', 'month' and 'day' coresponding to the date_column
+    INPUT:
+        df (pd.DataFrame): Dataframe with a datetime-type column
+        date_column (str): The datetime-type columns name
+
+    OUTPUT (pd.DataFrame) Original dataframe df with three extra 
+        columns 'year', 'month' and 'day' coresponding to the date_column
     '''
     df_trans = df
-    # Transform the data calumns in df_trans to date-type
+    # Transform the data columns in df_trans to date-type
     df_trans[date_column] = pd.to_datetime(df_trans[date_column])
     # Split the date information into three columns
     df_trans[prefix+"day"] = df_trans[date_column].map(lambda x: x.day)
@@ -29,7 +26,12 @@ def date_transform(df, date_column, prefix=''):
 
 
 def price_transform(usd_col):
-    '''Returns the input column without $-sings and as float-type'''
+    ''' Returns the input column without $-sings and as float-type 
+    
+    INPUT (pd.Series)
+
+    OUTPUT (pd.Series)
+    '''
 
     col_return = usd_col
     col_return = col_return.replace(
@@ -38,7 +40,11 @@ def price_transform(usd_col):
 
 
 def rate_transform(percentage_col):
-    '''Returns the input column without %-sings and as float-type'''
+    ''' Returns the input column without %-sings and as float-type 
+    
+    INPUT (pd.Series)
+
+    OUTPUT (pd.Series)'''
 
     col_return = percentage_col
     col_return = col_return.replace(
