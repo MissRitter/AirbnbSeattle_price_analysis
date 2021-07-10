@@ -1,116 +1,121 @@
 # Airbnb Prices in Seattle
 
 
-
-
-
 - [Motivation](#Project-Motivation)
 - [Installation](#Installations)
 - [Included](#File-Descriptions)
 - [Instructions](#How-To-Run-This-Project)
-- [ToDo](#ToDo)
-- [Copyright and license](#License)
+- [License](#License)
 
----
+
 
 ## Project Motivation
 
-AirBnB is a platform service connecting hosts and guest from the entire world.<br>
-This project tries to assist a host who wishes to optimize his/her offer to
-improve<br>
-value and get the best price possible in the market using the Airbnb Seattle<br>
-data form [kaggle.com](https://www.kaggle.com/airbnb/seattle/data).
+Airbnb is a platform service connecting hosts and guest within the entire world.<br>
+This project takes the perspective of a host who wishes to optimize his/her offer to
+improve the value and optimize the price within the market.<br>
+For this attempt it is restricted to the area of Seattle due to the data-set it is based on.<br>
+The data for this project is form [kaggle.com](https://www.kaggle.com/airbnb/seattle/data).
 
-This project is an assignment from the Udacity Data Science Nano Degree.<br>
+This project is an assignment from the [Udacity](https://classroom.udacity.com) Data Science Nano Degree.<br>
 
-### Project Description
-1. The data set could be chosen freely
-1. Answer at least three questions based on the data
-1. The project structure should follow the CRISP-DM process
 
-Deliveries: This repository on GitHub and a related blog post
-
----
 
 ## Installation
+
+If you are currently reading this on GitHub, you find all the information to get this repository at the top of the page where it says *Code*:
+
+![Code](https://github.com/MissRitter/AirbnbSeattle_price_analysis/blob/media/code.png)
+
+You can get this repository downloading a zip-file or by cloning it with this command:<br>
+```
+git clone https://github.com/MissRitter/AirbnbSeattle_price_analysis.git
+```
+
+Make sure that you have all necessary packages installed and with the correct version.<br>
 This project is based on:<br>
 
-| Module | Version|
-|---|---|
-|Jupiter | 1.0.0 |
-|Python | 3.8.5 |
-|Pandas | 1.2.2 |
-|Numpy  | 1.19.2 |
-|Scikit-learn  | 0.23.2 |
-|Matplotlib | 3.3.4 |
-|Seaborn | 0.11.1 |
+| Module: |[jupyter]() |[python]() |[pandas]() |[numpy ]() |[scikit-learn]()  |[matplotlib]() |[seaborn]() |
+| --- |---|---|--- |---  |---  |--- |--- |
+| **Version:** |1.0.0 |3.8.5 |1.2.2 |1.19.2 |0.23.2 |3.3.4 |0.11.1 |
 
----
 
 ## File Descriptions
-The Repository contains a set of Jupyter Notebooks, some Python script files
-and a subdirectory with three csv data files.
+
+The Repository contains a set of jupyter notebooks, some python script files
+and a subdirectory with three csv files.
+
 ### Jupyter Notebooks
-All importent steps are explained in Jupyter notebooks.
+All steps of the process are explained in jupyter notebooks.
 - 00_explore_data.ipynb
 - 01_explore_categorical_values.ipynb
 - 02_price_correlations.ipynb
+- 03_data_cleaning.ipynb
+- 04_price_model.ipynb
 
 
 ### Functions on The Data Set
+
 There are three python scrips which contain functions performing actions on the data<br>
-which have also been explored in corresponding notebooks. These functions are used<br>
-to encapsulate learnings from privieous notebooks and are imported into the following ones.<br>
+which have also been explored in corresponding notebooks. These functions
+summarize learnings from previous notebooks and are imported into following ones.<br>
 - CategoricalPrep.py
+- FeatureEngine.py
+- PrepAndModel.py
 
+### Auxiliary Functions
 
-### Auxilliary Functions
-These two files only hold auxilliary functions.
+These two files hold auxiliary functions.
 - ExploreData.py
-- TransformeData.py
+- TransformData.py
 
 ### Data
-The data can also be accessed via
+
+The Airbnb Seattle data can also be accessed via
 [kaggle.com](https://www.kaggle.com/airbnb/seattle/data)
 - /data
     - calendar.csv
     - listings.csv
     - reviews.csv
 
----
+The subdirectory gridsearch holds two csv files. They are not mandatory for this project to work, since they are generated in jupyter notebook 05.
+- /gridsearch
+    - grid_search_best_parameter.csv
+    - grid_search_parameter_results.csv
+
+
 
 ## How To Run This Project
-To follow this projects process you only need to access the Jupyter Notebooks.<br>
-All other scrips are included into the notebook if needed.<br>
+
+To follow this projects process you only need to access the jupyter notebooks.
+All other scrips are included into the notebook if needed.
 The notebooks are numbered. To go through the entire project,
-just follow the numbers.<br>
-If you are only interessted in certain parts of the process,
-here comes a quick summary of each notbook:
+just follow the order.<br>
+If you are only interested in certain parts of the process,
+here comes a quick summary of each notebook:
 
 ### 00_explore_data.ipynb
-A brief look at all data files to get an impression how they are conected and
-what one can to with it.
+A brief look at all data files to get an impression how they are connected and
+what one can do with them.
+
 ### 01_explore_categorical_values.ipynb
 Phrasing questions and preparing the data for further analysis.
+
 ### 02_price_correlations.ipynb
-Analysing the correlations within the data, to answer the previously
+Analyzing correlations within the data, to answer the previously
 posed questions.
 
----
-
-## ToDo
-The answer to question tree is still missing.
 ### 03_data_cleaning.ipynb
-To answer the third question the data has to be cleaned completeley.<br>
-That is done in this notebook.
-### 04_price_model.ipynb
-Modell training and avaluation on the final data set, to answer the last question.
+Final preparation steps before using the data for machine learning.
 
----
+### 04_price_model.ipynb
+Training and scoring of a decision tree regressor to predict a price.
+
+
 
 ## License
 
-MIT
+This project is published under the MIT license.
 
 
 
