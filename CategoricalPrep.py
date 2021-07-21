@@ -122,32 +122,13 @@ def transform_columns(df):
     all_values.remove('None')
 
     # Create a new column for every value:
-    split_column_values(df, 'host_verifications', all_values, 'host_verifications_')
+    split_column_values(
+        df,
+        'host_verifications',
+        all_values,
+        'host_verifications_'
+        )
     df.drop(columns='host_verifications', axis=1, inplace=True)
-
-    '''# calender_updated :
-    # Transform into an integer for the number of days passed
-    temp = [0 for x in df.index]
-    col = 'calendar_updated'
-    # endcode and write to temp
-    for i in df.index:
-        df[col].loc[i]
-        if 'yesterday' in df[col].loc[i]:
-            temp[i] = 1
-        elif 'today' in df[col].loc[i]:
-            temp[i] = 0
-        elif 'never' in df[col].loc[i]:
-            temp[i] = 1000000
-        elif 'day' in df[col].loc[i]:
-            temp[i] = int(df[col].loc[i].split(' ')[0])*1
-        elif 'a week' in df[col].loc[i]:
-            temp[i] = 7
-        elif 'week' in df[col].loc[i]:
-            temp[i] = int(df[col].loc[i].split(' ')[0])*7
-        elif 'month' in df[col].loc[i]:
-            temp[i] = int(df[col].loc[i].split(' ')[0])*30
-    # Overwrite the column calender_updated
-    df['calendar_updated'] = temp'''
 
     return df
 

@@ -13,11 +13,13 @@
 
 Airbnb is a platform service connecting hosts and guest within the entire world.<br>
 This project takes the perspective of a host who wishes to optimize his/her offer to
-improve the value and optimize the price within the market.<br>
-For this attempt it is restricted to the area of Seattle due to the data-set it is based on.<br>
+improve the value and optimize the price within the market.
+Finally it attempts to predict the price for a new Airbnb offer using the existing listings data and a machine learning approach.<br>
+For these attempts it is restricted to the area of Seattle due to the data-set it is based on.<br>
+
 The data for this project is form [kaggle.com](https://www.kaggle.com/airbnb/seattle/data).
 
-This project is an assignment from the [Udacity](https://classroom.udacity.com) Data Science Nano Degree.<br>
+This project is an assignment from the [Udacity](https://www.udacity.com/) Data Science Nano Degree.<br>
 
 
 
@@ -35,10 +37,17 @@ git clone https://github.com/MissRitter/AirbnbSeattle_price_analysis.git
 Make sure that you have all necessary packages installed and with the correct version.<br>
 This project is based on:<br>
 
-| Module: |[jupyter]() |[python]() |[pandas]() |[numpy ]() |[scikit-learn]()  |[matplotlib]() |[seaborn]() |
+| Module: |[jupyter][l:jupyter] |[python][l:python] |[pandas][l:pandas] |[numpy ][l:numpy] |[scikit-learn][l:scikit]  |[matplotlib][l:matplotlib] |[seaborn][l:seaborn] |
 | --- |---|---|--- |---  |---  |--- |--- |
 | **Version:** |1.0.0 |3.8.5 |1.2.2 |1.19.2 |0.23.2 |3.3.4 |0.11.1 |
 
+[l:jupyter]:https://jupyter.org/
+[l:python]:https://www.python.org/
+[l:pandas]:https://pandas.pydata.org/
+[l:numpy]:https://numpy.org/
+[l:scikit]:https://scikit-learn.org/
+[l:matplotlib]:https://matplotlib.org/
+[l:seaborn]:https://seaborn.pydata.org/
 
 ## File Descriptions
 
@@ -46,6 +55,7 @@ The Repository contains a set of jupyter notebooks, some python script files
 and a subdirectory with three csv files.
 
 ### Jupyter Notebooks
+
 All steps of the process are explained in jupyter notebooks.
 - 00_explore_data.ipynb
 - 01_explore_categorical_values.ipynb
@@ -56,7 +66,7 @@ All steps of the process are explained in jupyter notebooks.
 
 ### Functions on The Data Set
 
-There are three python scrips which contain functions performing actions on the data<br>
+There are three python files with functions summarizing actions on the data<br>
 which have also been explored in corresponding notebooks. These functions
 summarize learnings from previous notebooks and are imported into following ones.<br>
 - CategoricalPrep.py
@@ -115,7 +125,7 @@ Training and scoring of a decision tree regressor to predict a price.
 
 ## License
 
-This project is published under the MIT license.
+This project is published in 2021 under the [MIT](https://opensource.org/licenses/MIT) license.
 
 
 
