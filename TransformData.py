@@ -1,5 +1,4 @@
 
-#import numpy as np
 import pandas as pd
 
 def date_transform(df, date_column, prefix=''):
@@ -63,12 +62,13 @@ def split_column_values(df, col_name, real_values, prefix=''):
 
     INPUT:
     df - the pandas dataframe with col_name as a column
-    col_name - the column name you want to look through
-    real_values - a list of strings you want to search for 
-    in each row of df[col_name]
+    col_name (str)- the column name you want to look through
+    real_values (list) - a list of strings you want to search for 
+        in each row of df[col_name]
+    prefix (str) - optional prefix for new column names
 
     OUTPUT:
-    df - original df plus new columns with values {0,1}
+    df (pd.DataFrame) - original df plus new columns with values {0,1}
     '''
 
     #loop through list of values
