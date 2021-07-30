@@ -21,6 +21,8 @@ The data for this project is form [kaggle.com](https://www.kaggle.com/airbnb/sea
 
 This project is an assignment from the [Udacity](https://www.udacity.com/) Data Science Nano Degree.<br>
 
+There is also a blog post about this project on [Medium.com](https://medium.com/@MissRitter/make-the-most-of-airbnb-95a443b86bbe).
+
 
 
 ## Installation
